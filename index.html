@@ -15,28 +15,42 @@
   <body>
     <div class="weather-app">
       <header>
-        <form>
-          <input type="search" placeholder="Enter a city..." required />
-          <input type="submit" value="Search" />
+        <form class="search-form">
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            required
+            class="search-form-input"
+          />
+          <input type="submit" value="Search" class="search-form-button" />
         </form>
       </header>
       <main>
-        <h1>📍 Montreal</h1>
+        <h1 class="weather-app-city">📍 Montreal</h1>
         <div class="weather-app-data-1">
           <div>
-            <p>⛅</p>
-            <p>Clouds</p>
-            <p>Sunday, November 19</p>
+            <p class="weather-app-emoji">⛅</p>
+            <p>
+              <span class="weather-app-details"> Clouds </span>
+              <br />
+              <span class="weather-app-real-time"> Sunday, November 19</span>
+            </p>
           </div>
           <div>
-            <div>1</div>
-            <div>°C</div>
-            <p>Feels like -4°C</p>
+            <div class="weather-app-temperature-container">
+              <div class="weather-app-temperature">1</div>
+              <div class="weather-app-unit">°C</div>
+            </div>
+            <p class="weather-app-feelslike">Feels like <span>-4</span>°C</p>
           </div>
         </div>
-        <div class="weather-app-data-1">
-          <div>Humidity 💧: <span>61</span>%</div>
-          <div>Wind 🍃: <span>18</span>km/h</div>
+        <div class="weather-app-data-2">
+          <div>
+            Humidity 💧: <strong><span>61</span>%</strong>
+          </div>
+          <div>
+            Wind 🍃: <strong> <span>18</span>km/h</strong>
+          </div>
         </div>
       </main>
       <footer>
