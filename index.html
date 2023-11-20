@@ -15,18 +15,19 @@
   <body>
     <div class="weather-app">
       <header>
-        <form class="search-form">
+        <form class="search-form" id="search-form">
           <input
             type="search"
             placeholder="Enter a city..."
             required
+            id="search-form-input"
             class="search-form-input"
           />
           <input type="submit" value="Search" class="search-form-button" />
         </form>
       </header>
       <main>
-        <h1 class="weather-app-city">📍 Montreal</h1>
+        <h1 class="weather-app-city">📍<span id="city">Montreal</span></h1>
         <div class="weather-app-data-1">
           <div>
             <p class="weather-app-emoji">⛅</p>
@@ -71,5 +72,6 @@
         </a>
       </footer>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
