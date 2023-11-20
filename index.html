@@ -28,7 +28,7 @@
         </form>
       </header>
       <main>
-        <h1 class="weather-app-city">📍<span id="city">Montreal</span></h1>
+        <h1 class="weather-app-city">📍<span id="city"></span></h1>
         <div class="weather-app-data-1">
           <div>
             <p class="weather-app-emoji">⛅</p>
@@ -40,10 +40,12 @@
           </div>
           <div>
             <div class="weather-app-temperature-container">
-              <div class="weather-app-temperature">1</div>
+              <div class="weather-app-temperature" id="real-temperature"></div>
               <div class="weather-app-unit">°C</div>
             </div>
-            <p class="weather-app-feelslike">Feels like <span>-4</span>°C</p>
+            <p class="weather-app-feelslike">
+              Feels like <span id="feelslike-temperature">-4</span>°C
+            </p>
           </div>
         </div>
         <div class="weather-app-data-2">
