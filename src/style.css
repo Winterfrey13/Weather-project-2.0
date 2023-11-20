@@ -1,0 +1,26 @@
+body {
+  background-color: #f8f5ff;
+  font-family: "Libre Baskerville", serif;
+}
+
+.weather-app {
+  background: white;
+  max-width: 600px;
+  margin: 45px auto;
+  padding: 30px;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+  border-radius: 16px;
+}
+
+.weather-app-data-1 {
+  background: bisque;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+  border-radius: 16px;
+}
+
+footer {
+  text-align: center;
+}
