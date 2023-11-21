@@ -8,6 +8,9 @@ function refreshWeather(response) {
   let timeElement = document.querySelector("#time");
   let date = new Date(response.data.time * 1000);
   let feelslikeElement = document.querySelector("#feelslike-temperature");
+  let iconElement = document.querySelector("#icon");
+  let pressureElement = document.querySelector("#pressure");
+
 
   temperatureElement.innerHTML = Math.round(temperature);
   cityElement.innerHTML = response.data.city;
@@ -16,6 +19,9 @@ function refreshWeather(response) {
   windSpeedElement.innerHTML = `${response.data.wind.speed} km/h`;
   timeElement.innerHTML = formatDate(date);
   feelslikeElement.innerHTML = Math.round(response.data.temperature.feels_like);
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-emoji">`;
+  pressureElement.innerHTML = `${response.data.temperature.pressure}hPa`;
+
 }
 
 function formatDate(date) {
