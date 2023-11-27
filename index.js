@@ -11,7 +11,6 @@ function refreshWeather(response) {
   let iconElement = document.querySelector("#icon");
   let pressureElement = document.querySelector("#pressure");
 
-
   temperatureElement.innerHTML = Math.round(temperature);
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
@@ -21,7 +20,6 @@ function refreshWeather(response) {
   feelslikeElement.innerHTML = Math.round(response.data.temperature.feels_like);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-emoji">`;
   pressureElement.innerHTML = `${response.data.temperature.pressure}hPa`;
-
 }
 
 function formatDate(date) {
@@ -74,7 +72,31 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+  <div class="weather-forecast-day">
+    <div class="weather-forecast-date">${day}</div>
+    <div class="weather-forecast-icon">☁</div>
+    <div class="weather-forecast-temperature">
+      <span class="weather-forecast-temperature-max">18</span> |
+      <span class="weather-forecast-temperature-min">12</span>
+    </div>
+  </div>`;
+  });
+
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Montreal");
+displayForecast();
