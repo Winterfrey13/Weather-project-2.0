@@ -19,7 +19,9 @@ function refreshWeather(response) {
   timeElement.innerHTML = formatDate(date);
   feelslikeElement.innerHTML = Math.round(response.data.temperature.feels_like);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-emoji">`;
-  pressureElement.innerHTML = `${response.data.temperature.pressure}hPa`;
+  pressureElement.innerHTML = `${response.data.temperature.pressure} hPa`;
+
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -72,26 +74,43 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  return days[date.getDay()];
+}
+
+function getForecast(city) {
+  let apiKey = "0028ba044ca06fc2b3teda9ee7f81ob0";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+}
+
+
+function displayForecast(response) {
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHtml =
+        forecastHtml +
+        `
   <div class="weather-forecast-day">
-    <div class="weather-forecast-date">${day}</div>
-    <div class="weather-forecast-icon">☁</div>
+    <div class="weather-forecast-date">${formatDay(day.time)}</div>
+    <img src = "${day.condition.icon_url}"class="weather-forecast-icon">
     <div class="weather-forecast-temperature">
-      <span class="weather-forecast-temperature-max">18</span> |
-      <span class="weather-forecast-temperature-min">12</span>
+      <span class="weather-forecast-temperature-max">${Math.round(
+        day.temperature.maximum
+      )}°</span> |  
+      <span class="weather-forecast-temperature-min">${Math.round(
+        day.temperature.minimum
+      )}°</span>
     </div>
   </div>`;
+    }
   });
-
+  let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
 
@@ -99,4 +118,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Montreal");
-displayForecast();

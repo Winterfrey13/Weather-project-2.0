@@ -133,14 +133,21 @@ footer {
 
 .weather-forecast-date {
   font-size: 16px;
-  opacity: 0.6px;
+
 }
 .weather-forecast-temperature {
   font-size: 13px;
+  color: black;
+}
+
+.weather-forecast-temperature-max {
+  font-weight: bold;
+  color:rgb(196, 21, 167);
 }
 
 .weather-forecast-temperature-min {
-  opacity: 0.5;
+  opacity: 0.6;
+  color:rgb(196, 21, 167);
 }
 
 .weather-forecast {
@@ -155,4 +162,8 @@ footer {
   border-radius: 25px;
   line-height: 40px;
   text-align: center;
+}
+
+.weather-forecast-icon {
+  width :50px;
 }
