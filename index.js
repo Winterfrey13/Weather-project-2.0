@@ -31,7 +31,7 @@ function formatDate(date) {
   let days = [
     "Sunday",
     "Monday",
-    "Tuesay",
+    "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
